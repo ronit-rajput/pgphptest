@@ -12,4 +12,3 @@
 */
 
 Route::get('/user/{id}', 'UserController@getUser');
-Route::post('/comments', 'UserController@comments');

@@ -41,6 +41,8 @@ class AddComments extends Command
         $params = $this->arguments();
         $user = new UserController();
         $response = $user->appendComments($params);
-        $this->info($response->getData());
+        if($response){
+            $this->info($response->getData());
+        }
     }
 }

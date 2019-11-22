@@ -3,22 +3,6 @@
 use Illuminate\Http\Request;
 
 
-/**
- *
- * @param $string
- * @param int $code
- * @throws \Exception
- */
-if (!function_exists('apidie')) {
-    function apidie($string, $code = 200)
-    {
-        $string .= "";
-        http_response_code($code);
-        if (defined('SCRIPT') && SCRIPT)
-            throw new \Exception($string);
-        die($string);
-    }
-}
 
 /**
  * This function used to check if the string is valid json or not.
@@ -35,8 +19,8 @@ if (!function_exists('is_json')) {
 /**
  * This function used to create custom request object
  */
-if (!function_exists('createRequest')) {
-    function createRequest($params){
+if (!function_exists('createRequestObject')) {
+    function createRequestObject($params){
         try{
             if(count($params) > 0){
                 $request = new Request();
@@ -53,7 +37,7 @@ if (!function_exists('createRequest')) {
                 return $request;
             }
         }catch (\Exception $e){
-            echo $e->getMessage();
+            return response()->json('Error while creating request object: '.$e->getMessage(),500);
         }
     }
 }
