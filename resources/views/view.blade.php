@@ -12,8 +12,8 @@
     <section id="main">
         <header>
             <span class="avatar"><img src="{{ asset('images/users/'.$user->id.'.jpg') }}" alt="" /></span>
-            <h1>{{(isset($user->name))?$user->name:''}}</h1>
-            <p>{{(isset($user->comments))?nl2br($user->comments):''}}</p>
+            <h1>{{ (isset($user->name))?$user->name:'' }}</h1>
+            <p>{!! (isset($user->comments))?nl2br($user->comments):'' !!}</p>
         </header>
     </section>
     <footer id="footer">

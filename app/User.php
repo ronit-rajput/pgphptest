@@ -18,4 +18,5 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'comments',
     ];
+    public $timestamps = false;
 }
