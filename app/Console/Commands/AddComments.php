@@ -39,10 +39,12 @@ class AddComments extends Command
     public function handle()
     {
         $params = $this->arguments();
+        // This function will create a custom request object to handle the request params.
+        $request = createRequestObject($params);
         $user = new UserController();
-        $response = $user->appendComments($params);
+        $response = $user->postComment($request);
         if($response){
-            $this->info($response->getData());
+            $this->info($response->getData()->Message);
         }
     }
 }
